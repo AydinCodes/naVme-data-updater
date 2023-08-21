@@ -4,5 +4,20 @@
   "main": "index.js",
   "repository": "https://github.com/AydinMate/naVme-scraper.git",
   "author": "Aydin Elhan",
-  "license": "MIT"
+  "license": "MIT",
+  "scripts": {
+    "scraper": "npx ts-node src/scraper.ts",
+    "temp": "npx ts-node src/tempRun.ts"
+  },
+  "devDependencies": {
+    "@types/bcrypt": "^5.0.0",
+    "electron-builder": "^24.6.3",
+    "typescript": "^5.1.6"
+  },
+  "dependencies": {
+    "@prisma/client": "^5.1.1",
+    "prisma": "^5.1.1",
+    "puppeteer": "^21.1.0",
+    "readline": "^1.3.0"
+  }
 }
