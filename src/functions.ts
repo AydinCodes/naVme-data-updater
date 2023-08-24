@@ -1,85 +1,69 @@
 // createData.ts
 import { PrismaClient } from "@prisma/client";
 import readline from "readline";
+import { NewStoreType } from "./types";
 
 const prisma = new PrismaClient();
 
-// export async function addUser(username: string, url: string) {
 
-//   try {
-//     const user = await prisma.user.create({
-//       data: {
-//         username,
-//         url,
-//       },
-//     });
-
-//     console.log("User: ", username, " created.");
-
-//     return user;
-//   } catch (error) {
-//     console.log(error);
-//   }
-// }
-
-// export async function getUserById(id: string) {
-//   return await prisma.user.findFirst({
-//     where: {
-//       id: id,
-//     },
-//   });
-// }
-
-
-// export async function getUserByUsername(username: string) {
-//   return await prisma.user.findFirst({
-//     where: {
-//       username: username,
-//     },
-//   });
-// }
-
-// export async function deleteAllUsers() {
-//   await prisma.user.deleteMany();
-
-//   console.log("All users deleted.");
-// }
-
-// export async function findAllUsers() {
-//  const users =  await prisma.user.findMany();
-// console.log("All users: ", users)
-// return users
-// }
-
-
-// export const askPassword = () => {
-//   return new Promise<string>((resolve) => {
-//     const rl = readline.createInterface({
-//       input: process.stdin,
-//       output: process.stdout
-//     });
-
-//     rl.question('Enter the password: ', (password) => {
-//       rl.close();
-//       resolve(password);
-//     });
-//   });
-// }
-
-export async function addStore() {
-
+export async function addStore(storeDetails: NewStoreType) {
   try {
-    const user = await prisma.store.create({
+    const store = await prisma.store.create({
       data: {
-        userId: "user_2UQTRLJGY1yadz7gyKy3ZxEtxqe",
-        name: "provans",
-        deliveryManager: "dms",
+        userId: storeDetails.userId,
+        name: storeDetails.name,
+        deliveryManager: storeDetails.deliveryManager,
       },
     });
 
-    console.log(user)
-    return user;
+    console.log("New Store Created:", store);
+    return store;
   } catch (error) {
     console.log(error);
   }
 }
+
+export async function findStore(userId: string) {
+
+  try {
+    const store = await prisma.store.findMany({
+      where: {
+        userId: userId
+      }
+    });
+
+    console.log("Store found: ", store)
+    return store;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export async function deleteStore(userId: string) {
+
+  try {
+    const store = await prisma.store.deleteMany({
+      where: {
+        userId: userId
+      }
+    });
+
+    console.log("Store Deleted: ", userId)
+    return store;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export async function findAllStores() {
+
+  try {
+    const stores = await prisma.store.findMany();
+
+    console.log("All stores: ", stores)
+    return stores;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
