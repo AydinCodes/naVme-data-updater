@@ -1,19 +1,19 @@
-import { addStore, deleteStore, findAllStores, findStore } from "./functions";
-import { NewStoreType } from "./types";
+import { addCustomer, deleteAllCustomers, deleteCustomer, findAllCustomers, findCustomer } from "./functions";
+import { NewCustomerType } from "./types";
 
 
-const newStoreDetails: NewStoreType = {
-    userId: "testuserID",
-    name: "testname",
-    deliveryManager: "testmanager"
-};
+// const newCustomerDetails: NewCustomerType = {
+//     userId: "testuserID",
+//     storeName: "testname",
+// };
 
 
 (async () => {
-// await addStore(newStoreDetails)
-// await findStore(newStoreDetails.userId)
-// await deleteStore(newStoreDetails.userId)
-await findAllStores()
+// await addCustomer(newCustomerDetails)
+// await findCustomer(newCustomerDetails.userId)
+// await deleteCustomer(newCustomerDetails.userId)
+await findAllCustomers()
+// await deleteAllCustomers()
 })();
 
 

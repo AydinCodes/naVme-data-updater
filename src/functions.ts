@@ -1,67 +1,77 @@
 // createData.ts
 import { PrismaClient } from "@prisma/client";
-import readline from "readline";
-import { NewStoreType } from "./types";
+import { NewCustomerType } from "./types";
 
 const prisma = new PrismaClient();
+// npx prisma migrate reset - Deletes whole db
 
-
-export async function addStore(storeDetails: NewStoreType) {
+export async function addCustomer(customerDetails: NewCustomerType) {
   try {
-    const store = await prisma.store.create({
+    const customer = await prisma.customer.create({
       data: {
-        userId: storeDetails.userId,
-        name: storeDetails.name,
-        deliveryManager: storeDetails.deliveryManager,
+        userId: customerDetails.userId,
+        name: customerDetails.name,
       },
     });
 
-    console.log("New Store Created:", store);
-    return store;
+    console.log("New Customer Created:", customer);
+    return customer;
   } catch (error) {
     console.log(error);
   }
 }
 
-export async function findStore(userId: string) {
+export async function findCustomer(userId: string) {
 
   try {
-    const store = await prisma.store.findMany({
+    const customer = await prisma.customer.findMany({
       where: {
         userId: userId
       }
     });
 
-    console.log("Store found: ", store)
-    return store;
+    console.log("Customer found: ", customer)
+    return customer;
   } catch (error) {
     console.log(error);
   }
 }
 
-export async function deleteStore(userId: string) {
+export async function deleteCustomer(userId: string) {
 
   try {
-    const store = await prisma.store.deleteMany({
+    const customer = await prisma.customer.deleteMany({
       where: {
         userId: userId
       }
     });
 
-    console.log("Store Deleted: ", userId)
-    return store;
+    console.log("Customer Deleted: ", userId)
+    return customer;
   } catch (error) {
     console.log(error);
   }
 }
 
-export async function findAllStores() {
+export async function findAllCustomers() {
 
   try {
-    const stores = await prisma.store.findMany();
+    const customers = await prisma.customer.findMany();
 
-    console.log("All stores: ", stores)
-    return stores;
+    console.log("All customers: ", customers)
+    return customers;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export async function deleteAllCustomers() {
+
+  try {
+    const customers = await prisma.customer.deleteMany();
+
+    console.log("All customers: ", customers)
+    return customers;
   } catch (error) {
     console.log(error);
   }

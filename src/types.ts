@@ -1,5 +1,4 @@
-export interface NewStoreType {
+export interface NewCustomerType {
     userId: string,
     name: string,
-    deliveryManager: string
   }
