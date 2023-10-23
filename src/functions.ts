@@ -68,9 +68,10 @@ export async function findAllCustomers() {
 export async function deleteAllCustomers() {
 
   try {
+    const originDetails = await prisma.originDetails.deleteMany();
     const customers = await prisma.customer.deleteMany();
-
     console.log("All customers: ", customers)
+    console.log("All origin details", originDetails)
     return customers;
   } catch (error) {
     console.log(error);
