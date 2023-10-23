@@ -6,7 +6,8 @@
   "author": "Aydin Elhan",
   "license": "MIT",
   "scripts": {
-    "temp": "npx ts-node src/tempRun.ts"
+    "temp": "npx ts-node src/tempRun.ts",
+    "test": "npx ts-node src/test.ts"
   },
   "devDependencies": {
     "typescript": "^5.1.6"
