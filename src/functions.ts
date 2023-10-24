@@ -57,9 +57,23 @@ export async function findAllCustomers() {
 
   try {
     const customers = await prisma.customer.findMany();
+const allOriginDetails = await prisma.originDetails.findMany();
 
-    console.log("All customers: ", customers)
-    return customers;
+customers.map((customer) => {
+  const customerOriginDetails = allOriginDetails.find(
+    (originDetails) => originDetails.customerId === customer.id
+  );
+
+const customerDetails = {
+  ...customer,
+  originDetails: customerOriginDetails,
+}
+
+console.log(customerDetails)
+  return customerDetails;
+});
+
+
   } catch (error) {
     console.log(error);
   }

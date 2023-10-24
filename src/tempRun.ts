@@ -12,8 +12,8 @@ import { NewCustomerType } from "./types";
 // await addCustomer(newCustomerDetails)
 // await findCustomer(newCustomerDetails.userId)
 // await deleteCustomer(newCustomerDetails.userId)
-// await findAllCustomers()
-await deleteAllCustomers()
+await findAllCustomers()
+// await deleteAllCustomers()
 })();
 
 
